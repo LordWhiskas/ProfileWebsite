@@ -1,4 +1,4 @@
-name: Update README
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -6,21 +6,21 @@ on:
       - main
 
 jobs:
-  update-readme:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Update README.md
-      run: |
-        echo "## Updates" >> README.md
-        git log -1 --pretty=format:"%h - %s (%ci)" >> README.md
-        echo "" >> README.md
-    - name: Commit and push changes
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Git
       run: |
         git config --global user.name 'github-actions'
         git config --global user.email 'github-actions@github.com'
-        git add README.md
-        git commit -m 'Update README with latest changes'
-        git push
+
+    - name: Commit and Push changes
       env:
         GITHUB_TOKEN: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+      run: |
+        git add README.md
+        git commit -m "Update README with latest changes"
+        git push --force --quiet "https://x-access-token:${{ secrets.ACTIONS_DEPLOY_KEY }}@github.com/${{ github.repository }}.git" main
