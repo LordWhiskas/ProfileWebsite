@@ -33,7 +33,7 @@ jobs:
             elif [ "$status" = "D" ]; then
               emoji="🗑️"  # Файл был удален
             fi
-            if [ "$status" != "D" ]; тогда
+            if [ "$status" != "D" ]; then
               line_count=$(wc -l < "$file")
               file_link="[$file](./$file)"
               echo "- $emoji $file_link ($line_count lines)" >> new_section.txt
