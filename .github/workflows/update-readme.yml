@@ -19,7 +19,6 @@ jobs:
         id: changed-files
         run: |
           git diff --name-status HEAD^ HEAD > changed_files.txt
-          git diff --stat HEAD^ HEAD > changed_files_stats.txt
 
       - name: Prepare new README section
         run: |
@@ -46,7 +45,7 @@ jobs:
       - name: Update README.md
         run: |
           sed -i '/<!-- CHANGED_FILES_START -->/,/<!-- CHANGED_FILES_END -->/{//!d;}' README.md
-          sed -i '/<!-- CHANGED_FILES_START -->/{r new_section.txt' -e 'd}' README.md
+          sed -i '/<!-- CHANGED_FILES_START -->/r new_section.txt' README.md
 
       - name: Commit changes
         env:
