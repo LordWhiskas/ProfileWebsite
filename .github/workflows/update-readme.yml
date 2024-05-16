@@ -3,7 +3,7 @@ name: Update README.md with Changed Files
 on:
   push:
     branches:
-      - '**'
+      - '**'  # Запускается при любом пуше в любую ветку
 
 jobs:
   update-readme:
@@ -12,15 +12,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 2  # Гарантирует, что у нас есть предыдущий коммит для сравнения
 
       - name: Get the list of changed files
         id: changed-files
         run: |
-          if git rev-parse --verify HEAD^1 > /dev/null 2>&1; then
-            git diff --name-only HEAD^1 HEAD > changed_files.txt
-          else
-            git ls-files > changed_files.txt
-          fi
+          git diff --name-only HEAD^ HEAD > changed_files.txt
 
       - name: Format changed files
         run: |
