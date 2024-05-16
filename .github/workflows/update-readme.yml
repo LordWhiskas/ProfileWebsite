@@ -22,13 +22,14 @@ jobs:
 
       - name: Prepare new README section
         run: |
-          echo -e "<!-- CHANGED_FILES_START -->\n## Changed Files in the Last Commit\n" > new_section.txt
+          echo "<!-- CHANGED_FILES_START -->" > new_section.txt
+          echo "## Changed Files in the Last Commit" >> new_section.txt
           while read line; do echo "- $line"; done < changed_files.txt >> new_section.txt
-          echo -e "\n<!-- CHANGED_FILES_END -->" >> new_section.txt
+          echo "<!-- CHANGED_FILES_END -->" >> new_section.txt
 
       - name: Update README.md
         run: |
-          sed -i '/<!-- CHANGED_FILES_START -->/,/<!-- CHANGED_FILES_END -->/c\<-- CHANGED_FILES_START -->\n## Changed Files in the Last Commit\n' README.md
+          sed -i '/<!-- CHANGED_FILES_START -->/,/<!-- CHANGED_FILES_END -->/{//!d;}' README.md
           sed -i '/<!-- CHANGED_FILES_START -->/r new_section.txt' README.md
 
       - name: Commit changes
