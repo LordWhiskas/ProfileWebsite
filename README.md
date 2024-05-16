@@ -2,5 +2,5 @@
 
 <!-- CHANGED_FILES_START -->
 ## Changed Files in the Last Commit
-- ✏️ [README.md](./README.md) (6 lines)
+- 🗑️ caps-net/src/app/about/page.js
 <!-- CHANGED_FILES_END -->
