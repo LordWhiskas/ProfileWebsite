@@ -16,16 +16,16 @@ jobs:
       - name: Get the list of changed files
         id: changed-files
         run: |
-          if [ $(git rev-parse --verify HEAD^1) ]; then
+          if git rev-parse --verify HEAD^1 > /dev/null 2>&1; then
             git diff --name-only HEAD^1 HEAD > changed_files.txt
           else
             git ls-files > changed_files.txt
           fi
 
-      - name: Append changed files to README.md
+      - name: Format changed files
         run: |
           echo -e "\n## Changed Files in the Last Commit\n" >> README.md
-          cat changed_files.txt >> README.md
+          while read line; do echo "- $line"; done < changed_files.txt >> README.md
 
       - name: Commit changes
         env:
