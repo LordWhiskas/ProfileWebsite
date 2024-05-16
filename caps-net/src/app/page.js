@@ -101,7 +101,7 @@ export default function Home() {
                                 </div>
                                 <div className={styles.timelineContent}>
                                     <h2 className="text-2xl font-semibold">Started University</h2>
-                                    <h2 className="text-xl font-semibold mb-2">[Bachelor's degree]</h2>
+                                    <h2 className="text-xl font-semibold mb-2">[Bachelor&apos;s degree]</h2>
                                     <p>I began my studies at Technical University in Kosice, majoring in Intelligent
                                         Systems.</p>
                                     <span className={styles.timelineDate}>September 2021</span>
