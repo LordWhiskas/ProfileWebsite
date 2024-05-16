@@ -23,3 +23,7 @@
 - my-app/src/app/page.js
 - my-app/tailwind.config.js
 - update_readme.sh
+
+## Changed Files in the Last Commit
+
+- .github/workflows/update-readme.yml
