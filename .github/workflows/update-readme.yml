@@ -13,11 +13,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Get previous commit SHA
+        id: prev-commit
+        run: echo "PREV_COMMIT=$(git rev-parse HEAD^1)" >> $GITHUB_ENV || echo "PREV_COMMIT=$(git rev-parse HEAD)" >> $GITHUB_ENV
+
       - name: Get list of changed files
         id: changed-files
         run: |
           git fetch origin
-          git diff --name-only HEAD^ HEAD > changed_files.txt
+          git diff --name-only ${{ env.PREV_COMMIT }} HEAD > changed_files.txt
 
       - name: Append changed files to README.md
         run: |
