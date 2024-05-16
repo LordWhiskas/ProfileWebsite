@@ -22,7 +22,6 @@ jobs:
 
       - name: Prepare new README section
         run: |
-          echo "<!-- CHANGED_FILES_START -->" > new_section.txt
           echo "## Changed Files in the Last Commit" >> new_section.txt
           while read status file; do
             if [ "$status" = "A" ]; then
@@ -40,7 +39,6 @@ jobs:
               echo "- $emoji $file" >> new_section.txt
             fi
           done < changed_files.txt
-          echo "<!-- CHANGED_FILES_END -->" >> new_section.txt
 
       - name: Update README.md
         run: |
