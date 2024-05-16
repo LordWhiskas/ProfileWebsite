@@ -3,7 +3,6 @@ name: Update README.md with Hello
 on:
   push:
     branches:
-      - '**'  # Запускается при любом пуше в любую ветку
 
 jobs:
   update-readme:
