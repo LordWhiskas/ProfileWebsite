@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef } from 'react';
-import styles from './Home.module.css'; // Импорт CSS модуля
+import styles from './Home.module.css';
+import Image from "next/image"; // Импорт CSS модуля
 
 export default function Home() {
     const pathname = usePathname();
@@ -81,11 +82,7 @@ export default function Home() {
                             <div className="text-md font-medium">Kyryl Zuiev</div>
                         </div>
                         <Link href="/">
-                            <img
-                                className="h-10 w-10 rounded-full cursor-pointer border-2 border-blue-400"
-                                src="/avatar.png" // Укажите путь к вашему изображению
-                                alt="Profile"
-                            />
+                            <Image alt="profile image" src="/avatar.png" width="564" height="564" className="h-10 w-10 rounded-full cursor-pointer border-2 border-blue-400"></Image>
                         </Link>
                     </div>
                 </header>
