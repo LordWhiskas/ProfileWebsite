@@ -4,7 +4,8 @@ import Link from "next/link";
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef } from 'react';
 import styles from './Home.module.css';
-import Image from "next/image"; // Импорт CSS модуля
+import Image from "next/image";
+import NavBar from "@/app/components/NavBar"; // Импорт CSS модуля
 
 export default function Home() {
     const pathname = usePathname();
@@ -12,7 +13,7 @@ export default function Home() {
 
     useEffect(() => {
         const observerOptions = {
-            threshold: 0.1,
+            threshold: 0.05,
         };
 
         const observerCallback = (entries, observer) => {
@@ -49,46 +50,23 @@ export default function Home() {
 
     return (
         <div className="h-screen w-full bg-white relative flex overflow-hidden">
-            <aside className="h-full w-16 flex flex-col space-y-10 items-center justify-center relative bg-gray-800 text-white">
-                <Link href="/">
-                    <div
-                        className={`h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:text-gray-800 hover:bg-white hover:duration-300 hover:ease-linear focus:bg-white ${
-                            pathname === "/" ? "border-2 border-white-400" : ""
-                        }`}
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-                            <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                        </svg>
-                    </div>
-                </Link>
-
-                <Link href="/projects">
-                    <div
-                        className={`h-10 w-10 flex items-center justify-center rounded-lg cursor-pointer hover:text-gray-800 hover:bg-white hover:duration-300 hover:ease-linear focus:bg-white ${
-                            pathname === "/projects" ? "border-2 border-white-400" : ""
-                        }`}
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                        </svg>
-                    </div>
-                </Link>
-            </aside>
-
+            <NavBar/>
             <div className="w-full h-full flex flex-col justify-between">
-                <header className="h-16 w-full flex items-center relative justify-end px-5 space-x-10 bg-gray-800">
-                    <div className="flex flex-shrink-0 items-center space-x-4 text-white">
-                        <div className="flex flex-col items-end">
-                            <div className="text-md font-medium">Kyryl Zuiev</div>
-                        </div>
+                <header className="h-16 w-full flex items-center relative justify-end px-5 md:px-25 space-x-4 bg-gray-800">
+                    <div className="flex flex-shrink-0 items-center space-x-2 text-white">
                         <Link href="/">
-                            <Image alt="profile image" src="/avatar.png" width="564" height="564" className="h-10 w-10 rounded-full cursor-pointer border-2 border-blue-400"></Image>
+                            <Image alt="profile image" src="/avatar.png" width="564" height="564"
+                                   className="h-10 w-10 rounded-full cursor-pointer border-2 border-blue-400"></Image>
                         </Link>
+                        <div className="flex flex-col items-end">
+                            <div className="text-lg font-medium">Kyryl Zuiev</div>
+                        </div>
                     </div>
                 </header>
-
-                <main className="max-w-full h-full flex flex-col items-center justify-start p-8 bg-gray-100 overflow-y-auto" ref={timelineRef}>
-                    <div className="w-full max-w-4xl mx-auto p-8 rounded-lg shadow-lg bg-white">
+                <main
+                    className="w-full h-full flex flex-col justify-start p-4 md:p-8 bg-gray-100 overflow-y-auto"
+                    ref={timelineRef}>
+                    <div className="w-full max-w-4xl mx-auto p-4 md:p-8 rounded-lg shadow-lg bg-white">
                         <h1 className="text-4xl font-bold mb-12 text-center">My Professional Timeline</h1>
                         <div className={styles.timeline}>
                             <div className={`${styles.timelineItem} ${styles.left}`}>
@@ -135,7 +113,8 @@ export default function Home() {
                                     </svg>
                                 </div>
                                 <div className={styles.timelineContent}>
-                                    <h2 className="text-2xl font-semibold">Analysis of Hierarchical Structures in Capsule Neural Networks</h2>
+                                    <h2 className="text-2xl font-semibold">Analysis of Hierarchical Structures in
+                                        Capsule Neural Networks</h2>
                                     <h2 className="text-xl font-semibold mb-2">[Bc. thesis work]</h2>
                                     <p>Technologies:</p>
                                     <p className="font-semibold">Python, Pytorch, Flask, Dash, NetworkX, Git.</p>
