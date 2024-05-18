@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef } from 'react';
 import NavBar from "@/app/components/NavBar"; // Импорт CSS модуля
+import Image from "next/image"
 
 export default function Projects() {
     const pathname = usePathname();
