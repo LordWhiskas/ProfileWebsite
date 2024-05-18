@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/CapsuleNeuralNetwork.iml" filepath="$PROJECT_DIR$/.idea/CapsuleNeuralNetwork.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ProfileWebsite.iml" filepath="$PROJECT_DIR$/.idea/ProfileWebsite.iml" />
     </modules>
   </component>
 </project>
