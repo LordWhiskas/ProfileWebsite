@@ -28,6 +28,20 @@ const projects = [
         projectUrl: "https://vercel-web-ai-shop-app.vercel.app/",
         githubUrl: "https://github.com/LordWhiskas/Vercel-Web-AI-Shop-App",
     },
+    {
+        id: 4,
+        name: "Webots-EchoSphereRobot",
+        imageUrl: "/webots.png",
+        projectUrl: "",
+        githubUrl: "https://github.com/LordWhiskas/Webots-EchoSphereRobot",
+    },
+    {
+        id: 5,
+        name: "ICD_Machine_Learning",
+        imageUrl: "/icd.png",
+        projectUrl: "",
+        githubUrl: "https://github.com/LordWhiskas/ICD_Machine_Learning",
+    },
 ];
 
 export default function Projects() {
