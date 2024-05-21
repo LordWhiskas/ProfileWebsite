@@ -1,19 +1,69 @@
 'use client'
 
 import Link from "next/link";
-import { usePathname } from 'next/navigation';
-import { useEffect, useRef } from 'react';
-import NavBar from "@/app/components/NavBar"; // Импорт CSS модуля
-import Image from "next/image"
+import { useState, useEffect } from 'react';
+import NavBar from "@/app/components/NavBar";
+import Image from "next/image";
+
+// Sample projects array
+const projects = [
+    {
+        id: 1,
+        name: "Interactive-visualization-tool-for-Capsule-NN",
+        imageUrl: "/capsule-project.png", // Replace with your actual image paths
+        projectUrl: "",
+        githubUrl: "https://github.com/LordWhiskas/Visualization-Capsule-Neural-Networks"
+    },
+    {
+        id: 2,
+        name: "Profile-Website",
+        imageUrl: "/profile-website.png",
+        projectUrl: "/",
+        githubUrl: "https://github.com/LordWhiskas/ProfileWebsite"
+    },
+    {
+        id: 3,
+        name: "Vercel-Web-AI-Shop-App",
+        imageUrl: "/vercel-ai-shop.png",
+        projectUrl: "https://vercel-web-ai-shop-app.vercel.app/",
+        githubUrl: "https://github.com/LordWhiskas/Vercel-Web-AI-Shop-App",
+    },
+];
 
 export default function Projects() {
-    const pathname = usePathname();
+    const [selectedProject, setSelectedProject] = useState(null);
+    const [isDesktop, setIsDesktop] = useState(false);
+
+    // Обновление состояния при изменении размера экрана
+    useEffect(() => {
+        const updateMedia = () => {
+            setIsDesktop(window.innerWidth >= 768); // 768px - медиазапрос для Tailwind
+        };
+
+        updateMedia();
+        window.addEventListener('resize', updateMedia);
+        return () => window.removeEventListener('resize', updateMedia);
+    }, []);
+
+    const handleClick = (projectId, e) => {
+        if (!isDesktop) {
+            if (selectedProject === projectId) {
+                // If the same project is clicked again, allow the default action (navigate to link)
+                return;
+            } else {
+                // Prevent the default action and select the project
+                e.preventDefault();
+                setSelectedProject(projectId);
+            }
+        }
+    };
 
     return (
         <div className="h-screen w-full bg-white relative flex overflow-hidden">
-            <NavBar/>
+            <NavBar />
             <div className="w-full h-full flex flex-col justify-between">
-                <header className="h-16 w-full flex items-center relative justify-end px-5 md:px-25 space-x-4 bg-gray-800">
+                <header
+                    className="h-16 w-full flex items-center relative justify-end px-5 md:px-25 space-x-4 bg-gray-800">
                     <div className="flex flex-shrink-0 items-center space-x-2 text-white">
                         <Link href="/">
                             <Image alt="profile image" src="/avatar.png" width="564" height="564"
@@ -24,6 +74,35 @@ export default function Projects() {
                         </div>
                     </div>
                 </header>
+                <main className="w-full h-full flex flex-col justify-start p-3 md:p-14 bg-gray-100 overflow-y-auto">
+                    <div className="w-full flex flex-wrap items-start justify-start gap-20">
+                        {projects.map(project => (
+                            <div key={project.id}
+                                 onClick={(e) => handleClick(project.id, e)}
+                                 className="w-full md:w-96 h-60 rounded-lg flex-shrink-0 flex-grow bg-white shadow-lg relative group cursor-pointer md:hover:scale-110 transition duration-300 ease-in-out">
+                                <Image src={project.imageUrl} alt={project.name} layout="fill" objectFit="cover"
+                                       className="rounded-lg" />
+                                <div
+                                    className="absolute bottom-0 left-0 w-full p-2 bg-black bg-opacity-50 text-white text-center rounded-b-lg">
+                                    {project.name}
+                                </div>
+                                <div
+                                    className={`absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 transition duration-300 ease-in-out space-y-4 rounded-lg ${
+                                        selectedProject === project.id ? "opacity-100" : "opacity-0"
+                                    } md:opacity-0 md:group-hover:opacity-100`}>
+                                    <a href={project.githubUrl} onClick={(e) => isDesktop ? null : handleClick(project.id, e)} className="text-white bg-blue-500 px-4 py-2 rounded hover:bg-blue-700 transition">
+                                        GitHub
+                                    </a>
+                                    {project.projectUrl && (
+                                        <a href={project.projectUrl} onClick={(e) => isDesktop ? null : handleClick(project.id, e)} className="text-white bg-green-500 px-4 py-2 rounded hover:bg-green-700 transition">
+                                            View Project
+                                        </a>
+                                    )}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </main>
             </div>
         </div>
     );
