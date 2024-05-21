@@ -4,7 +4,7 @@ import Link from "next/link";
 import {usePathname} from 'next/navigation';
 import {useEffect, useRef} from 'react';
 import styles from './Home.module.css';
-import Image from "next/image";
+import Image from "next/legacy/image";
 import NavBar from "@/app/components/NavBar"; // Импорт CSS модуля
 
 export default function Home() {

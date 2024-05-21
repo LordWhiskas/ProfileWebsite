@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState, useEffect } from 'react';
 import NavBar from "@/app/components/NavBar";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 // Sample projects array
 const projects = [
@@ -66,7 +66,7 @@ export default function Projects() {
                     className="h-16 w-full flex items-center relative justify-end px-5 md:px-25 space-x-4 bg-gray-800">
                     <div className="flex flex-shrink-0 items-center space-x-2 text-white">
                         <Link href="/">
-                            <Image alt="profile image" src="/avatar.png" width="564" height="564"
+                            <Image alt="profile image" src="/avatar.png" width={50} height={50} priority={true}
                                    className="h-10 w-10 rounded-full cursor-pointer border-2 border-blue-400"></Image>
                         </Link>
                         <div className="flex flex-col items-end">
@@ -80,7 +80,7 @@ export default function Projects() {
                             <div key={project.id}
                                  onClick={(e) => handleClick(project.id, e)}
                                  className="w-full md:w-96 h-60 rounded-lg flex-shrink-0 flex-grow bg-white shadow-lg relative group cursor-pointer md:hover:scale-110 transition duration-300 ease-in-out">
-                                <Image src={project.imageUrl} alt={project.name} layout="fill" objectFit="cover"
+                                <Image src={project.imageUrl} alt={project.name} layout="fill" objectFit="cover" priority={true}
                                        className="rounded-lg" />
                                 <div
                                     className="absolute bottom-0 left-0 w-full p-2 bg-black bg-opacity-50 text-white text-center rounded-b-lg">
