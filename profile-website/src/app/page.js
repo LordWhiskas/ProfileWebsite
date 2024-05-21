@@ -56,7 +56,7 @@ export default function Home() {
                     className="h-16 w-full flex items-center relative justify-end px-5 md:px-25 space-x-4 bg-gray-800">
                     <div className="flex flex-shrink-0 items-center space-x-2 text-white">
                         <Link href="/">
-                            <Image alt="profile image" src="/avatar.png" width="564" height="564"
+                            <Image alt="profile image" src="/avatar.png" width={50} height={50} priority={true}
                                    className="h-10 w-10 rounded-full cursor-pointer border-2 border-blue-400"></Image>
                         </Link>
                         <div className="flex flex-col items-end">
