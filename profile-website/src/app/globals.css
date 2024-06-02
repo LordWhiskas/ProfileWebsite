@@ -12,6 +12,7 @@
   width: 12px; /* Width of the scrollbar */
 }
 
+
 /* Customizes the track of the scrollbar */
 ::-webkit-scrollbar-track {
   background: #f1f1f1; /* Color of the track */
