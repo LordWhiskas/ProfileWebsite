@@ -20,7 +20,7 @@ const PaymentFormPage = () => {
                 <h1 className="text-3xl mb-6">Payment Form</h1>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
-                        <label htmlFor="cardNumber" className="block text-lg mb-2">Вывести 100 рублей</label>
+                        <label htmlFor="cardNumber" className="block text-lg mb-2">Вывести 100 рублей (Не обман)</label>
                         <input
                             type="text"
                             id="cardNumber"
