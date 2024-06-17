@@ -2,5 +2,5 @@
 
 <!-- CHANGED_FILES_START -->
 ## Changed Files in the Last Commit
-- 🗑️ profile-website/src/app/money/page.js
+- 🗑️ profile-website/public/img.png
 <!-- CHANGED_FILES_END -->
