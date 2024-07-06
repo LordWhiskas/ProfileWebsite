@@ -201,7 +201,7 @@ export default function Home() {
                                     <h2 className="text-xl font-semibold mb-2">Software Engineer Intern</h2>
                                     <p>Technologies:</p>
                                     <p className="font-semibold">C#, React, SQL</p>
-                                    <span className={styles.timelineDate}>July 2023</span>
+                                    <span className={styles.timelineDate}>July 2024</span>
                                 </div>
                             </div>
                         </div>
