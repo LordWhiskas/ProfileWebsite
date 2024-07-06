@@ -81,7 +81,9 @@ export default function Home() {
                                 <div className={styles.timelineContent}>
                                     <h2 className="text-2xl font-semibold">Started University</h2>
                                     <h2 className="text-xl font-semibold mb-2">[Bachelor&apos;s degree]</h2>
-                                    <p>I began my studies at <a className={"text-cyan-600"} href={"https://www.tuke.sk/wps/portal/tuke/!ut/p/z1/dYzBCsIwEES_ptfsUttSvAW8WNrag9C6F0klpsWYlDQa8OsNeBJ0bm94M0AwABnxnJXwszVCRz5Rca55nqVVhs2hLFLk3f7Y7rKma3OEHggoKvgnHKECUtqOnzduxk2pgJy8Sicde7hYT94v6zbBBEMITFmrtGQXe0_w12Syq4fh24TlZl617Pkbm8CYdQ!!/dz/d5/L0lDUmlTUSEhL3dHa0FKRnNBLzROV3FpQSEhL2Vu/"}>Technical University in Kosice</a>, majoring in Intelligent
+                                    <p>I began my studies at <a className={"text-cyan-600"}
+                                                                href={"https://www.tuke.sk/wps/portal/tuke/!ut/p/z1/dYzBCsIwEES_ptfsUttSvAW8WNrag9C6F0klpsWYlDQa8OsNeBJ0bm94M0AwABnxnJXwszVCRz5Rca55nqVVhs2hLFLk3f7Y7rKma3OEHggoKvgnHKECUtqOnzduxk2pgJy8Sicde7hYT94v6zbBBEMITFmrtGQXe0_w12Syq4fh24TlZl617Pkbm8CYdQ!!/dz/d5/L0lDUmlTUSEhL3dHa0FKRnNBLzROV3FpQSEhL2Vu/"}>Technical
+                                        University in Kosice</a>, majoring in Intelligent
                                         Systems.</p>
                                     <span className={styles.timelineDate}>September 2021</span>
                                 </div>
@@ -95,7 +97,9 @@ export default function Home() {
                                     </svg>
                                 </div>
                                 <div className={styles.timelineContent}>
-                                    <h2 className="text-2xl font-semibold"><a className={"text-cyan-600"} href={"https://hackkosice.com/2023/"}>HackKosice 2023</a></h2>
+                                    <h2 className="text-2xl font-semibold"><a className={"text-cyan-600"}
+                                                                              href={"https://hackkosice.com/2023/"}>HackKosice
+                                        2023</a></h2>
                                     <h2 className="text-xl font-semibold mb-2">[Full-stack Developer]</h2>
                                     <p className="mb-2">My team and I take part in HackKosice, 2023. Our theme was
                                         an <b>AI comics
@@ -114,7 +118,8 @@ export default function Home() {
                                     </svg>
                                 </div>
                                 <div className={styles.timelineContent}>
-                                    <Link className={"text-cyan-600"} href={"https://github.com/LordWhiskas/Visualization-Capsule-Neural-Networks"}>
+                                    <Link className={"text-cyan-600"}
+                                          href={"https://github.com/LordWhiskas/Visualization-Capsule-Neural-Networks"}>
                                         <h2 className="text-2xl font-semibold">Analysis of Hierarchical Structures in
                                             Capsule Neural Networks</h2>
                                     </Link>
@@ -152,8 +157,9 @@ export default function Home() {
                                     </svg>
                                 </div>
                                 <div className={styles.timelineContent}>
-                                    <Link className={"text-cyan-600"} href={"https://github.com/LordWhiskas/Vercel-Web-AI-Shop-App"}>
-                                    <h2 className="text-2xl font-semibold">E-Commerce AI Web Application</h2>
+                                    <Link className={"text-cyan-600"}
+                                          href={"https://github.com/LordWhiskas/Vercel-Web-AI-Shop-App"}>
+                                        <h2 className="text-2xl font-semibold">E-Commerce AI Web Application</h2>
                                     </Link>
                                     <h2 className="text-xl font-semibold mb-2">[Full-stack Developer]</h2>
                                     <p>Technologies:</p>
@@ -177,6 +183,25 @@ export default function Home() {
                                     <p>UvoCorp is an academic platform, where people can place orders and writers can
                                         complete them.</p>
                                     <span className={styles.timelineDate}>March 2024</span>
+                                </div>
+                            </div>
+                            <div className={`${styles.timelineItem} ${styles.left}`}>
+                                <div className={styles.timelineIcon}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
+                                         viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                              d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                                <div className={styles.timelineContent}>
+                                    <Link className={"text-cyan-600"}
+                                          href={"https://www.infobip.com/offices/slovakia-kosice"}>
+                                        <h2 className="text-2xl font-semibold">Infobip</h2>
+                                    </Link>
+                                    <h2 className="text-xl font-semibold mb-2">Software Engineer Intern</h2>
+                                    <p>Technologies:</p>
+                                    <p className="font-semibold">C#, React, SQL</p>
+                                    <span className={styles.timelineDate}>July 2023</span>
                                 </div>
                             </div>
                         </div>
