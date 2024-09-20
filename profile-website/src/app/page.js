@@ -1,11 +1,80 @@
-'use client'
+'use client';
 
 import Link from "next/link";
-import {usePathname} from 'next/navigation';
-import {useEffect, useRef} from 'react';
+import { usePathname } from 'next/navigation';
+import { useEffect, useRef } from 'react';
 import styles from './Home.module.css';
 import Image from "next/legacy/image";
 import NavBar from "@/app/components/NavBar"; // Импорт CSS модуля
+
+const timelineData = [
+    {
+        side: "left",
+        title: "Started University",
+        subtitle: "[Bachelor's degree]",
+        description: "I began my studies at Technical University in Kosice, majoring in Intelligent Systems.",
+        link: {
+            href: "https://www.tuke.sk/wps/portal/tuke/!ut/p/z1/dYzBCsIwEES_ptfsUttSvAW8WNrag9C6F0klpsWYlDQa8OsNeBJ0bm94M0AwABnxnJXwszVCRz5Rca55nqVVhs2hLFLk3f7Y7rKma3OEHggoKvgnHKECUtqOnzduxk2pgJy8Sicde7hYT94v6zbBBEMITFmrtGQXe0_w12Syq4fh24TlZl617Pkbm8CYdQ!!/dz/d5/L0lDUmlTUSEhL3dHa0FKRnNBLzROV3FpQSEhL2Vu/",
+        },
+        date: "September 2021 - till now",
+        technologies: []
+    },
+    {
+        side: "right",
+        title: "HackKosice 2023",
+        subtitle: "[Full-stack Developer]",
+        description: "My team and I take part in HackKosice, 2023. Our theme was an AI comics generator. It was a great experience!",
+        link: {
+            href: "https://hackkosice.com/2023/",
+        },
+        date: "April 2023",
+        technologies: ["JavaScript", "Node.js", "React", "MongoDB Atlas", "Git"]
+    },
+    {
+        side: "left",
+        title: "Analysis of Hierarchical Structures in Capsule Neural Networks",
+        subtitle: "[Bc. thesis work]",
+        description: "",
+        link: {
+            href: "https://github.com/LordWhiskas/Visualization-Capsule-Neural-Networks",
+        },
+        date: "September 2023 - till now",
+        technologies: ["Python", "Pytorch", "Flask", "Dash", "NetworkX", "Git"]
+    },
+    {
+        side: "right",
+        title: "UvoCorp",
+        subtitle: "[Middle developer]",
+        description: "UvoCorp is an academic platform, where people can place orders and writers can complete them.",
+        link: {
+            href: "https://www.uvocorp.com/",
+        },
+        date: "March 2024 - June 2024",
+        technologies: ["Python", "Git", "JavaScript", "C", "C#"]
+    },
+    {
+        side: "left",
+        title: "Infobip",
+        subtitle: "[Software Engineer Intern]",
+        description: "Infobip is a global leader in omnichannel communication. Worked as part of a team to develop an internal tool that aggregates data from multiple databases into a single web application, simplifying the data analysis process for the business side of the company.",
+        link: {
+            href: "https://www.infobip.com/company",
+        },
+        date: "June 2024 - September 2024",
+        technologies: ["C#", "JavaScript", "TypeScript", "React", "Agile", "TeamWork", "Bridging"]
+    },
+    {
+        side: "right",
+        title: "Infobip",
+        subtitle: "[Junior Software Engineer]",
+        description: "After successfully completing the internship, I join the same team, but as a Junior Software Engineer.",
+        link: {
+            href: "https://www.infobip.com/company",
+        },
+        date: "September 2024 - till now",
+        technologies: ["C#", "JavaScript", "TypeScript", "React", "Agile", "TeamWork", "Bridging"]
+    },
+];
 
 export default function Home() {
     const pathname = usePathname();
@@ -30,17 +99,14 @@ export default function Home() {
         const items = timelineRef.current.querySelectorAll(`.${styles.timelineItem}`);
         items.forEach(item => observer.observe(item));
 
-        // Устанавливаем начальную позицию скролла в нижнюю часть
         if (timelineRef.current) {
             timelineRef.current.scrollTop = timelineRef.current.scrollHeight;
-
-            // Плавный скролл вверх при загрузке страницы
             setTimeout(() => {
                 timelineRef.current.scrollTo({
                     top: 0,
                     behavior: 'smooth'
                 });
-            }, 1000); // Задержка в 1 секунду перед началом скролла вверх
+            }, 1000);
         }
 
         return () => {
@@ -50,7 +116,7 @@ export default function Home() {
 
     return (
         <div className="h-screen w-full bg-white relative flex overflow-hidden">
-            <NavBar/>
+            <NavBar />
             <div className="w-full h-full flex flex-col justify-between">
                 <header
                     className="h-16 w-full flex items-center relative justify-end px-5 md:px-25 space-x-4 bg-gray-800">
@@ -64,146 +130,39 @@ export default function Home() {
                         </div>
                     </div>
                 </header>
-                <main
-                    className="w-full h-full flex flex-col justify-start p-4 md:p-8 bg-gray-100 overflow-y-auto"
-                    ref={timelineRef}>
+                <main className="w-full h-full flex flex-col justify-start p-4 md:p-8 bg-gray-100 overflow-y-auto" ref={timelineRef}>
                     <div className="w-full max-w-4xl mx-auto p-4 md:p-8 rounded-lg shadow-lg bg-white">
                         <h1 className="text-4xl font-bold mb-12 text-center">My Professional Timeline</h1>
                         <div className={styles.timeline}>
-                            <div className={`${styles.timelineItem} ${styles.left}`}>
-                                <div className={styles.timelineIcon}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
-                                         viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                                              d="M5 13l4 4L19 7"/>
-                                    </svg>
+                            {timelineData.map((item, index) => (
+                                <div key={index} className={`${styles.timelineItem} ${styles[item.side]}`}>
+                                    <div className={styles.timelineIcon}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
+                                             viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                                  d="M5 13l4 4L19 7" />
+                                        </svg>
+                                    </div>
+                                    <div className={styles.timelineContent}>
+                                        {item.link ? (
+                                            <Link href={item.link.href} className="text-cyan-600">
+                                                <h2 className="text-2xl font-semibold">{item.title}</h2>
+                                            </Link>
+                                        ) : (
+                                            <h2 className="text-2xl font-semibold">{item.title}</h2>
+                                        )}
+                                        <h2 className="text-xl font-semibold mb-2">{item.subtitle}</h2>
+                                        <p>{item.description}</p>
+                                        {item.technologies.length > 0 && (
+                                            <>
+                                                <p>Technologies:</p>
+                                                <p className="font-semibold">{item.technologies.join(", ")}</p>
+                                            </>
+                                        )}
+                                        <span className={styles.timelineDate}>{item.date}</span>
+                                    </div>
                                 </div>
-                                <div className={styles.timelineContent}>
-                                    <h2 className="text-2xl font-semibold">Started University</h2>
-                                    <h2 className="text-xl font-semibold mb-2">[Bachelor&apos;s degree]</h2>
-                                    <p>I began my studies at <a className={"text-cyan-600"}
-                                                                href={"https://www.tuke.sk/wps/portal/tuke/!ut/p/z1/dYzBCsIwEES_ptfsUttSvAW8WNrag9C6F0klpsWYlDQa8OsNeBJ0bm94M0AwABnxnJXwszVCRz5Rca55nqVVhs2hLFLk3f7Y7rKma3OEHggoKvgnHKECUtqOnzduxk2pgJy8Sicde7hYT94v6zbBBEMITFmrtGQXe0_w12Syq4fh24TlZl617Pkbm8CYdQ!!/dz/d5/L0lDUmlTUSEhL3dHa0FKRnNBLzROV3FpQSEhL2Vu/"}>Technical
-                                        University in Kosice</a>, majoring in Intelligent
-                                        Systems.</p>
-                                    <span className={styles.timelineDate}>September 2021</span>
-                                </div>
-                            </div>
-                            <div className={`${styles.timelineItem} ${styles.right}`}>
-                                <div className={styles.timelineIcon}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
-                                         viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                                              d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </div>
-                                <div className={styles.timelineContent}>
-                                    <h2 className="text-2xl font-semibold"><a className={"text-cyan-600"}
-                                                                              href={"https://hackkosice.com/2023/"}>HackKosice
-                                        2023</a></h2>
-                                    <h2 className="text-xl font-semibold mb-2">[Full-stack Developer]</h2>
-                                    <p className="mb-2">My team and I take part in HackKosice, 2023. Our theme was
-                                        an <b>AI comics
-                                            generator.</b> It was a great experience!</p>
-                                    <p>Technologies:</p>
-                                    <p className="font-semibold">JavaScript, Node.js, React, MongoDB Atlas, Git.</p>
-                                    <span className={styles.timelineDate}>April 2023</span>
-                                </div>
-                            </div>
-                            <div className={`${styles.timelineItem} ${styles.left}`}>
-                                <div className={styles.timelineIcon}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
-                                         viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                                              d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </div>
-                                <div className={styles.timelineContent}>
-                                    <Link className={"text-cyan-600"}
-                                          href={"https://github.com/LordWhiskas/Visualization-Capsule-Neural-Networks"}>
-                                        <h2 className="text-2xl font-semibold">Analysis of Hierarchical Structures in
-                                            Capsule Neural Networks</h2>
-                                    </Link>
-                                    <h2 className="text-xl font-semibold mb-2">[Bc. thesis work]</h2>
-                                    <p>Technologies:</p>
-                                    <p className="font-semibold">Python, Pytorch, Flask, Dash, NetworkX, Git.</p>
-                                    <span className={styles.timelineDate}>September 2023</span>
-                                </div>
-                            </div>
-                            <div className={`${styles.timelineItem} ${styles.right}`}>
-                                <div className={styles.timelineIcon}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
-                                         viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                                              d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </div>
-                                <div className={styles.timelineContent}>
-                                    <h2 className="text-2xl font-semibold">Hackathon Telekom 2023</h2>
-                                    <h2 className="text-xl font-semibold mb-2">[Full-stack Developer]</h2>
-                                    <p className="mb-2">My team and I take part in Hackathon Telekom, 2023. Our theme
-                                        was an <b>UI/UX Park
-                                            System.</b></p>
-                                    <p>Technologies:</p>
-                                    <p className="font-semibold">JavaScript, Node.js, React, MongoDB Atlas, Git.</p>
-                                    <span className={styles.timelineDate}>November, 2023</span>
-                                </div>
-                            </div>
-                            <div className={`${styles.timelineItem} ${styles.left}`}>
-                                <div className={styles.timelineIcon}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
-                                         viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                                              d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </div>
-                                <div className={styles.timelineContent}>
-                                    <Link className={"text-cyan-600"}
-                                          href={"https://github.com/LordWhiskas/Vercel-Web-AI-Shop-App"}>
-                                        <h2 className="text-2xl font-semibold">E-Commerce AI Web Application</h2>
-                                    </Link>
-                                    <h2 className="text-xl font-semibold mb-2">[Full-stack Developer]</h2>
-                                    <p>Technologies:</p>
-                                    <p className="font-semibold">Python, React, Node.js, JavaScript, Vercel, Git,
-                                        MongoDB Atlas, OpenAI API.</p>
-                                    <span className={styles.timelineDate}>November 2023</span>
-                                </div>
-                            </div>
-                            <div className={`${styles.timelineItem} ${styles.right}`}>
-                                <div className={styles.timelineIcon}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
-                                         viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                                              d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </div>
-                                <div className={styles.timelineContent}>
-                                    <h2 className="text-2xl font-semibold">UvoCorp</h2>
-                                    <h2 className="text-xl font-semibold mb-2">[Middle developer(Python, C, C#,
-                                        JavaScript)]</h2>
-                                    <p>UvoCorp is an academic platform, where people can place orders and writers can
-                                        complete them.</p>
-                                    <span className={styles.timelineDate}>March 2024</span>
-                                </div>
-                            </div>
-                            <div className={`${styles.timelineItem} ${styles.left}`}>
-                                <div className={styles.timelineIcon}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
-                                         viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                                              d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </div>
-                                <div className={styles.timelineContent}>
-                                    <Link className={"text-cyan-600"}
-                                          href={"https://www.infobip.com/offices/slovakia-kosice"}>
-                                        <h2 className="text-2xl font-semibold">Infobip</h2>
-                                    </Link>
-                                    <h2 className="text-xl font-semibold mb-2">Software Engineer Intern</h2>
-                                    <p>Technologies:</p>
-                                    <p className="font-semibold">C#, React, SQL</p>
-                                    <span className={styles.timelineDate}>July 2024</span>
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </div>
                 </main>
