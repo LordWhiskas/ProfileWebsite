@@ -72,7 +72,7 @@ const timelineData = [
             href: "https://www.infobip.com/company",
         },
         date: "September 2024 - till now",
-        technologies: ["C#", "JavaScript", "TypeScript", "React", "Agile", "TeamWork", "Bridging"]
+        technologies: ["C#", "JavaScript", "TypeScript", "React", "Agile", "TeamWork"]
     },
 ];
 
