@@ -16,7 +16,7 @@ const timelineData = [
         link: {
             href: "https://www.tuke.sk/wps/portal/tuke/!ut/p/z1/dYzBCsIwEES_ptfsUttSvAW8WNrag9C6F0klpsWYlDQa8OsNeBJ0bm94M0AwABnxnJXwszVCRz5Rca55nqVVhs2hLFLk3f7Y7rKma3OEHggoKvgnHKECUtqOnzduxk2pgJy8Sicde7hYT94v6zbBBEMITFmrtGQXe0_w12Syq4fh24TlZl617Pkbm8CYdQ!!/dz/d5/L0lDUmlTUSEhL3dHa0FKRnNBLzROV3FpQSEhL2Vu/",
         },
-        date: "September 2021 - till now",
+        date: "September 2021 - June 2025",
         technologies: []
     },
     {
